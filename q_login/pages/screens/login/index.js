@@ -8,17 +8,24 @@ import {
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
+  const [passWord, setpassWord] = useState("");
+
   const onChangeEmail = (event) => {
-    console.log(event.nativeEvent.text);
     setEmail(event.nativeEvent.text);
   };
   const onPressLogin = () => {
     navigation.navigate("LoginSuccess", { email: email });
   };
+  const onChangePassWord = (event) => {
+    setpassWord(event.nativeEvent.text);
+    const asyncPassword = JSON.stringify(passWord);
+    AsyncStorage.setItem("@set_password", asyncPassword);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.top}>
@@ -35,6 +42,7 @@ export default function Login() {
         ></TextInput>
         <TextInput
           style={styles.passwordBox}
+          onChange={onChangePassWord}
           placeholder="비밀번호를 입력해주세요"
         ></TextInput>
         <TouchableOpacity style={styles.loginButton} onPress={onPressLogin}>

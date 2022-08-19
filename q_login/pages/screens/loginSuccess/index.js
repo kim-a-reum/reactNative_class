@@ -1,10 +1,18 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const LoginSuccess = ({ route }) => {
   const props = route.params;
+  const AsyncValue = AsyncStorage.getItem("@set_password");
   const onPressFinsh = ({ navigation }) => {
     navigation.navigate("LoginSuccess", email);
   };
+
+  // console.log(AsyncStorage.getItem("@set_password"));
+  // const asyncPassword = JSON.parse(AsyncStorage.getItem("@set_password"));
+  const jsonValue = AsyncStorage.getItem("@storage_Key");
+  const myjsonValue = JSON.parse(jsonValue);
+  console.log(myjsonValue);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
