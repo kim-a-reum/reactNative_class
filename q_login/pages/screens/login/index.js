@@ -18,12 +18,24 @@ export default function Login() {
     setEmail(event.nativeEvent.text);
   };
   const onPressLogin = () => {
+    try {
+      const asyncPassword = JSON.stringify(passWord);
+      AsyncStorage.setItem("@set_password", asyncPassword);
+    } catch (e) {
+      console.log(e);
+    }
     navigation.navigate("LoginSuccess", { email: email });
   };
   const onChangePassWord = (event) => {
     setpassWord(event.nativeEvent.text);
-    const asyncPassword = JSON.stringify(passWord);
-    AsyncStorage.setItem("@set_password", asyncPassword);
+
+    // const storeData = async (value) => {
+    //   try {
+    //     await AsyncStorage.setItem('@storage_Key', value)
+    //   } catch (e) {
+    //     // saving error
+    //   }
+    // }
   };
 
   return (

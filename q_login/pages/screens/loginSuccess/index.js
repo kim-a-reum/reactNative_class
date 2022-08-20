@@ -4,21 +4,19 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 export const LoginSuccess = ({ route }) => {
   const props = route.params;
   const AsyncValue = AsyncStorage.getItem("@set_password");
-  const onPressFinsh = ({ navigation }) => {
-    navigation.navigate("LoginSuccess", email);
-  };
+  // const onPressFinsh = ({ navigation }) => {
+  //   navigation.navigate("LoginSuccess", email);
+  // };
 
-  // console.log(AsyncStorage.getItem("@set_password"));
-  // const asyncPassword = JSON.parse(AsyncStorage.getItem("@set_password"));
   const jsonValue = AsyncStorage.getItem("@storage_Key");
-  const myjsonValue = JSON.parse(jsonValue);
-  console.log(myjsonValue);
+  // const myjsonValue = JSON.parse(jsonValue);
+  console.log(jsonValue);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
         <Text>{props.email}</Text>님 반갑습니다!{" "}
       </Text>
-      <TouchableOpacity style={styles.loginButton} onPress={onPressFinsh}>
+      <TouchableOpacity style={styles.loginButton}>
         <Text style={{ fontSize: 20, fontWeight: "800" }}>완료</Text>
       </TouchableOpacity>
     </View>
