@@ -1,20 +1,28 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const LoginSuccess = ({ route }) => {
-  const props = route.params;
-  const AsyncValue = AsyncStorage.getItem("@set_password");
-  // const onPressFinsh = ({ navigation }) => {
-  //   navigation.navigate("LoginSuccess", email);
-  // };
+  const [asyncStorage, setAsyncstorage] = useState({});
 
-  const jsonValue = AsyncStorage.getItem("@storage_Key");
-  // const myjsonValue = JSON.parse(jsonValue);
-  console.log(jsonValue);
+  const props = route.params;
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const data = await AsyncStorage.getItem("passWord");
+    setAsyncstorage(JSON.parse(data));
+  };
+
+  console.log(asyncStorage);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        <Text>{props.email}</Text>님 반갑습니다!{" "}
+        <Text>{props.email}</Text>님 반갑습니다!
+        <Text>{asyncStorage.passWord}</Text>{" "}
       </Text>
       <TouchableOpacity style={styles.loginButton}>
         <Text style={{ fontSize: 20, fontWeight: "800" }}>완료</Text>

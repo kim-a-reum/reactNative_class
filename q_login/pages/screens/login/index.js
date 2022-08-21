@@ -12,30 +12,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
-  const [passWord, setpassWord] = useState("");
+  const [passWord, setpassWord] = useState({});
 
   const onChangeEmail = (event) => {
     setEmail(event.nativeEvent.text);
   };
-  const onPressLogin = () => {
-    try {
-      const asyncPassword = JSON.stringify(passWord);
-      AsyncStorage.setItem("@set_password", asyncPassword);
-    } catch (e) {
-      console.log(e);
-    }
+  const onPressLogin = async () => {
+    await AsyncStorage.setItem("passWord", JSON.stringify(passWord));
     navigation.navigate("LoginSuccess", { email: email });
   };
   const onChangePassWord = (event) => {
-    setpassWord(event.nativeEvent.text);
-
-    // const storeData = async (value) => {
-    //   try {
-    //     await AsyncStorage.setItem('@storage_Key', value)
-    //   } catch (e) {
-    //     // saving error
-    //   }
-    // }
+    setpassWord({ passWord: event.nativeEvent.text });
   };
 
   return (
