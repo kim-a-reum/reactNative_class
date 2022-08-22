@@ -16,7 +16,7 @@ export const LoginSuccess = ({ route }) => {
     setAsyncstorage(JSON.parse(data));
   };
 
-  console.log(asyncStorage);
+  console.log(asyncStorage.passWord);
 
   return (
     <View style={styles.container}>
