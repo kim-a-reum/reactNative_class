@@ -14,9 +14,6 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-
-  // <WebView source={{uri : "https://voluntier.site"}}/>
-  //
 }
 
 const styles = StyleSheet.create({
