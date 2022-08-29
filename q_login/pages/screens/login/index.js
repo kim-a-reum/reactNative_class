@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { Fontisto } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 
 export default function Login() {
@@ -37,7 +36,6 @@ export default function Login() {
         ></Image>
       </View>
       <Fontisto name="applemusic" size={24} color="black" />
-      {/* <Fontisto name="bower" size={24} color="black" /> */}
       <View style={styles.middle}>
         <TextInput
           style={styles.emailBox}
